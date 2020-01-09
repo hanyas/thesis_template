@@ -55,7 +55,7 @@
 				 \\ vorgelegte Dissertation \par} \vspace*{10mm}
 			{von \par} \vspace*{3mm}
 			{{\Large \@author} \par} \vspace*{20mm}
-			{Erstgutahter: Prof. Jan Peters, Ph.D. \par}
+			{Erstgutachter: Prof. Jan Peters, Ph.D. \par}
 			{Zweitgutachter: Prof. \par}  \vspace*{30mm}
 			Darmstadt, \selectlanguage{ngerman} \today
 		\end{center}

@@ -4,6 +4,11 @@
 \setcounter{minitocdepth}{2} 
 \mtcsetrules{*}{off}
 
+\newcommand{\filterminitoc}[1]{#1}
+\renewcommand{\thesection}{\csname filterminitoc \endcsname{\arabic{chapter}.}\arabic{section}}
+\newcommand{\minitocsection}{\begingroup\renewcommand{\filterminitoc}[1]{}\minitoc\endgroup}
+
+
 \usepackage{layout}
 \usepackage{kantlipsum}
 
@@ -60,7 +65,7 @@
 	\pagenumbering{arabic}
 		
 	\chapter{Introduction}
-	\minitoc 
+	\minitocsection 
 	\kant
 	\section{First Section}
 	\kant
@@ -70,7 +75,7 @@
 	\kant
 	
 	\chapter{Second Chapter}
-	\minitoc 
+	\minitocsection 
 	\kant
 	\section{First Section}
 	\kant
@@ -80,7 +85,7 @@
 	\kant
 	
 	\chapter{Third Chapter}
-	\minitoc 
+	\minitocsection 
 	\kant
 	\section{First Section}
 	\kant

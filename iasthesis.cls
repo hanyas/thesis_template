@@ -7,6 +7,8 @@
 % Broad permissions are granted to use, modify, and distribute this software
 % as specified in the MIT License included in this distribution's LICENSE file.
 
+% !TeX root = thesis.tex
+
 %-------------------------- identification ---------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{iasthesis}[2020/01/07 TUDa IAS thesis class]
@@ -73,9 +75,6 @@
 \clearpairofpagestyles
 \renewcommand{\chaptermark}[1]{\markboth{\scshape Chapter \thechapter: #1}{\scshape Chapter \thechapter: #1}}
 \renewcommand{\sectionmark}[1]{{\markright{\scshape Section \thesection: #1}}}
-%\lohead{\leftmark} \rehead{\rightmark}
-
-%\lofoot{\pagemark} \refoot{\pagemark}
 \ofoot*{\pagemark}
 \ohead{\headmark}
 \addtokomafont{pageheadfoot}{\upshape}
@@ -96,8 +95,7 @@
 		\renewcommand{\raggedchapter}{\raggedleft}
 		\renewcommand*{\chapterformat}{\thechapter}
 		
-		\chapter*{Acknowledgements}
-%		\thispagestyle{scrheadings}
+		\chapter*{\textcolor{crimson}{Acknowledgements}}
 		\setlength{\parskip}{\baselineskip}%
 		\setlength{\parindent}{0pt}
 	}
@@ -113,8 +111,7 @@
 		\renewcommand{\raggedchapter}{\raggedleft}
 		\renewcommand*{\chapterformat}{\thechapter}
 
-		\chapter*{Abstract}
-%		\thispagestyle{scrheadings}
+		\chapter*{{Abstract}}
 		\setlength{\parskip}{\baselineskip}%
 		\setlength{\parindent}{0pt}		
 	}
@@ -130,8 +127,7 @@
 	\renewcommand{\raggedchapter}{\raggedleft}
 	\renewcommand*{\chapterformat}{\thechapter}
 	
-	\chapter*{Kurzfassung}
-%	\thispagestyle{scrheadings}
+	\chapter*{\textcolor{crimson}{Kurzfassung}}
 	\setlength{\parskip}{\baselineskip}%
 	\setlength{\parindent}{0pt}
 	}
@@ -141,15 +137,16 @@
 % Chapter numbering color
 \definecolor{indianred}{rgb}{0.8,0.36,0.36}
 \definecolor{bostonred}{rgb}{0.8,0.0,0.0}
-\definecolor{crimson}{rgb}{0.6471, 0.1098, 0.1882}
+\definecolor{crimson}{rgb}{0.6471, 0.1098, 0.1882}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Redefine section style
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Change spacing before and after sction titles
-\RedeclareSectionCommand[beforeskip=0pt,runin=false,afterskip=-\parskip]{section}
-
+\RedeclareSectionCommand[beforeskip=0pt,runin=false,afterskip=-0.5\parskip]{section}
+\addtokomafont{section}{\textcolor{crimson}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Redefine chapter style
@@ -158,15 +155,17 @@
 % Define color for chapter number
 \newcommand{\chapternumfont}{%      % define font for chapter number
 	\usefont{T1}{pnc}{b}{n}%        % choose New Chancery, bold, normal shape
-	\fontsize{35}{35}%              % font size 50pt, baselineskip 50pt
+	\fontsize{50}{50}%              % font size 50pt, baselineskip 50pt
 	\selectfont%                    % activate font
 }
 
 \RedeclareSectionCommand[beforeskip=0pt,innerskip=-20pt,afterskip=0pt,afterindent=false]{chapter}
 \renewcommand*{\raggedchapter}{\raggedleft}
 
-\addtokomafont{chapterprefix}{\chapternumfont \textcolor{crimson!100}}
-\addtokomafont{chapter}{\Huge\bfseries}
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{chapterprefix}{\chapternumfont \textcolor{gray!50}}
+\addtokomafont{chapter}{\Huge\bfseries \textcolor{crimson}}
+\addtokomafont{chapterentry}{\Large \textcolor{crimson}}
 
 \setlength{\parskip}{\baselineskip}%
 \setlength{\parindent}{0pt}

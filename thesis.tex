@@ -4,6 +4,7 @@
 \setcounter{minitocdepth}{2} 
 \mtcsetrules{*}{off}
 
+% removes chapter numbers from minitoc
 \newcommand{\filterminitoc}[1]{#1}
 \renewcommand{\thesection}{\csname filterminitoc \endcsname{\arabic{chapter}.}\arabic{section}}
 \newcommand{\minitocsection}{\begingroup\renewcommand{\filterminitoc}[1]{}\minitoc\endgroup}
@@ -45,17 +46,9 @@
 	\end{abstract}
 	
 	\dominitoc[n]
-		
-	% right-align content title and add header and footer
-	{
-		\RedeclareSectionCommand[beforeskip=0pt, afterskip=20pt, afterindent=false]{chapter}
-		\renewcommand{\raggedchapter}{\raggedleft}
-		\renewcommand*{\chapterformat}{\thechapter}
-		
-		\tableofcontents
-%		\thispagestyle{scrheadings}
-		\clearpage
-	}
+	
+	\tableofcontents
+	\clearpage
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%
 	% Document mainmatter

@@ -7,7 +7,7 @@ I am not an expert in Latex, many tricks used here could mostly likely be solved
 # Sources
 I was inspired by the Oxford thesis template: https://github.com/mcmanigle/OxThesis
 
-and the thesis of Adrian: https://tuprints.ulb.tu-darmstadt.de/8107/
+and the thesis of Adrian Šošić: https://tuprints.ulb.tu-darmstadt.de/8107/
 
 For more inspiration checkout the Harvard template: https://github.com/suchow/Dissertate
 

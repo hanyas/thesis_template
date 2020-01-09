@@ -1,0 +1,156 @@
+\documentclass{iasthesis}
+
+\usepackage{layout}
+\usepackage{kantlipsum}
+
+
+\begin{document}
+	
+	\title{A Suitable Title}
+	\author{Hany Abdulsamad, M.Sc.}
+	
+	\maketitle
+	
+	\begin{dedication}
+		\input{meta/dedication.tex}
+	\end{dedication}
+
+	% start roman numbering at abstract
+	\pagenumbering{Roman}
+	
+%	% check layout margins
+%	\layout
+	
+	\begin{acknowledgements}
+		\input{meta/acknowledgements.tex}
+	\end{acknowledgements}
+
+	\begin{kurzfassung}
+		\begin{otherlanguage}{ngerman}
+			\input{meta/kurzfassung.tex}
+		\end{otherlanguage}
+	\end{kurzfassung}
+
+	\begin{abstract}
+		\input{meta/abstract.tex}
+	\end{abstract}
+	
+	
+	% right-align content title and add header and footer
+	{
+		\RedeclareSectionCommand[beforeskip=0pt, afterskip=10pt, afterindent=false]{chapter}
+		\renewcommand{\raggedchapter}{\raggedleft}
+		\renewcommand*{\chapterformat}{\thechapter}
+		
+		\tableofcontents
+%		\thispagestyle{scrheadings}
+		\clearpage
+	}
+
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% Redefine section style
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	% Change spacing before and after sction titles
+	\RedeclareSectionCommand[beforeskip=10pt, afterskip=10pt]{section}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% Redefine part style
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% Define color for part number
+	\newcommand{\partnumfont}{%         % define font for chapter number
+		\usefont{T1}{pnc}{b}{n}%        % choose New Chancery, bold, normal shape
+		\fontsize{50}{50}%              % font size 50pt, baselineskip 50pt
+		\selectfont%                    % activate font
+	}
+	
+	% Decrease stip between part number and part title
+	\RedeclareSectionCommand[beforeskip=0pt, afterskip=0pt, innerskip=0pt, afterindent=false]{part}
+	
+	% Make parts left aligned
+	\renewcommand*{\raggedpart}{\raggedleft}
+	
+	% Format part number and title
+	\setkomafont{partnumber}{\Huge\bfseries \partnumfont\textcolor{indianred!100}}
+	\setkomafont{part}{\Huge\bfseries}
+	
+	%% Remove dot after part number (now superseded by document option)
+	%\renewcommand*{\partformat}{\partname~\thepart} 
+	
+	% The following is to stop part from clearning page
+	\makeatletter
+	
+	% Modify the \@endpart macro
+	\def\@endpart{\vspace{10pt}} 
+	
+	% Suppress vertical whitespace before "Part xx" material
+	
+	\patchcmd{\part}{\null\vfill}{}{}{}
+	\makeatother
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% Redefine chapter style
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\makeatletter
+	\RedeclareSectionCommand[beforeskip=0pt, afterskip=10pt]{chapter}
+	\setkomafont{chapter}{\huge\bfseries}
+	
+	\renewcommand*{\raggedchapter}{\centering}
+	\renewcommand*{\chapterformat}{\thechapter}
+	
+%	% Remove clearpage at chapter beginning
+%	\patchcmd\scr@startchapter{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+	
+	\newbox\@chapter@heading@testbox
+	\renewcommand\chapterlinesformat[3]{%
+		\savebox\@chapter@heading@testbox{#2#3}%
+		\parbox{\linewidth}{%
+			\centering
+			\rule[.6ex]{4em}{2pt}~\thechapter~\rule[.6ex]{4em}{2pt} \par
+			{\let\@@par\relax
+				\centering #3%
+			}%
+		}%
+	}
+	\makeatother
+	
+		
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	% Document mainmatter
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% use arabic numbering from first chapter on
+	\pagenumbering{arabic}
+	
+	\chapter{First Chapter}
+	\kant
+	\section{First Section}
+	\kant
+	
+	\part{Introduction}
+	\kant
+	
+	\chapter{Second Chapter}
+	\kant
+	\section{First Section}
+	\kant
+	\section{Second Section}
+	\kant
+	\section{Third Section}
+	\kant
+	
+	\chapter{Third Chapter}
+	\kant
+	\section{First Section}
+	\kant
+	\section{Second Section}
+	\kant
+	\section{Third Section}
+	\kant
+		
+\end{document}

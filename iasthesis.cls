@@ -12,7 +12,7 @@
 \ProvidesClass{iasthesis}[2020/01/07 TUDa IAS thesis class]
 %-------------------------- initial code -----------------------
 
-\LoadClass[a4paper,twoside,12pt,numbers=noenddot,chapterprefix=true]{scrreport}
+\LoadClass[a4paper,twoside,12pt,numbers=noenddot]{scrreport}
 
 \usepackage{scrhack}
 
@@ -95,7 +95,7 @@
 		\renewcommand*{\chapterformat}{\thechapter}
 		
 		\chapter*{Acknowledgements}
-%		\thispagestyle{scrheadings}
+		\thispagestyle{scrheadings}
 		\setlength{\parskip}{\baselineskip}%
 		\setlength{\parindent}{0pt}
 	}
@@ -112,7 +112,7 @@
 		\renewcommand*{\chapterformat}{\thechapter}
 
 		\chapter*{Abstract}
-%		\thispagestyle{scrheadings}
+		\thispagestyle{scrheadings}
 		\setlength{\parskip}{\baselineskip}%
 		\setlength{\parindent}{0pt}		
 	}
@@ -129,7 +129,7 @@
 	\renewcommand*{\chapterformat}{\thechapter}
 	
 	\chapter*{Kurzfassung}
-%	\thispagestyle{scrheadings}
+	\thispagestyle{scrheadings}
 	\setlength{\parskip}{\baselineskip}%
 	\setlength{\parindent}{0pt}
 	}
@@ -140,30 +140,3 @@
 \definecolor{indianred}{rgb}{0.8,0.36,0.36}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Redefine section style
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Change spacing before and after sction titles
-\RedeclareSectionCommand[beforeskip=0pt,runin=false,afterskip=-\parskip]{section}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Redefine chapter style
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Define color for chapter number
-\newcommand{\chapternumfont}{%      % define font for chapter number
-	\usefont{T1}{pnc}{b}{n}%        % choose New Chancery, bold, normal shape
-	\fontsize{35}{35}%              % font size 50pt, baselineskip 50pt
-	\selectfont%                    % activate font
-}
-
-\RedeclareSectionCommand[beforeskip=0pt,innerskip=-20pt,afterskip=0pt,afterindent=false]{chapter}
-\renewcommand*{\raggedchapter}{\raggedleft}
-
-\addtokomafont{chapterprefix}{\chapternumfont \textcolor{indianred!100}}
-\addtokomafont{chapter}{\Huge\bfseries}
-
-\setlength{\parskip}{\baselineskip}%
-\setlength{\parindent}{0pt}

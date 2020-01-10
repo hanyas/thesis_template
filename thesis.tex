@@ -20,6 +20,12 @@
 	\fi
 }
 
+% multiple bibliographies
+\usepackage{multibbl}
+
+% control spaceing in bib
+\usepackage{bibspacing}
+
 \usepackage{layout}
 \usepackage{kantlipsum}
 
@@ -55,11 +61,16 @@
 		\input{meta/abstract.tex}
 	\end{meta}
 
-	\bibliographystyle{myalpha}
-%	\bibliographystyle{apalike}
-	\renewcommand{\bibname}{Publications}
-	\bibliography{meta/publications.bib}
-	\nocite*
+
+
+	% publication biblio
+	\newbibliography{pubs}
+	\bibliographystyle{pubs}{myalpha}
+
+	\setlength{\bibitemsep}{.25\baselineskip plus .05\baselineskip minus .05\baselineskip}
+	\nocite{pubs}{*}
+	\bibliography{pubs}{meta/publications.bib}{Publications}
+
 
 	\dominitoc[n]
 	
@@ -102,5 +113,11 @@
 	\kant
 	\section{Third Section}
 	\kant
-		
+	
+	\newbibliography{refs}
+	\bibliographystyle{refs}{fixalpha}
+	\setlength{\bibitemsep}{.25\baselineskip plus .05\baselineskip minus .05\baselineskip}
+	\nocite{refs}{*}
+	\bibliography{refs}{meta/references.bib}{Bibliography}
+	
 \end{document}

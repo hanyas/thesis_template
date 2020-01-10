@@ -23,7 +23,7 @@
 \usepackage{datetime}
 
 \usepackage{xcolor}
-\usepackage{graphicx} 
+\usepackage{graphicx}
 
 \usepackage{setspace}
 \onehalfspacing
@@ -65,7 +65,7 @@
 
 % Penalize hyphenation
 \pretolerance=10000
-\tolerance=2000 
+\tolerance=2000
 \emergencystretch=0pt
 
 
@@ -86,48 +86,16 @@
 		{\end{center} \vspace*{\fill}\vspace*{\fill} \clearpage \end{@empty}}
 
 
-% Define acknowledgements
-\newenvironment{acknowledgements}%
-{   \begin{@empty}
-		\clearpage
-
-		\RedeclareSectionCommand[beforeskip=0pt, afterskip=0pt, afterindent=false]{chapter}
-		\renewcommand{\raggedchapter}{\raggedleft}
-		\renewcommand*{\chapterformat}{\thechapter}
-		
-		\chapter*{\textcolor{crimson}{Acknowledgements}}
-		\setlength{\parskip}{\baselineskip}%
-		\setlength{\parindent}{0pt}
-	}
-	{\end{@empty}}
-
-
-% Redefine abstract
-\renewenvironment{abstract}%
-{   \begin{@empty}
-		\clearpage
-
-		\RedeclareSectionCommand[beforeskip=0pt, afterskip=0pt, afterindent=false]{chapter}
-		\renewcommand{\raggedchapter}{\raggedleft}
-		\renewcommand*{\chapterformat}{\thechapter}
-
-		\chapter*{{Abstract}}
-		\setlength{\parskip}{\baselineskip}%
-		\setlength{\parindent}{0pt}		
-	}
-	{\clearpage \end{@empty}}
-
-
-% Define german abstract
-\newenvironment{kurzfassung}%
+% Define env for abstract and acknowledgement
+\newenvironment{meta}[1]%
 {   \begin{@empty}
 	\clearpage
-	
+
 	\RedeclareSectionCommand[beforeskip=0pt, afterskip=0pt, afterindent=false]{chapter}
 	\renewcommand{\raggedchapter}{\raggedleft}
 	\renewcommand*{\chapterformat}{\thechapter}
-	
-	\chapter*{\textcolor{crimson}{Kurzfassung}}
+
+	\chapter*{#1}
 	\setlength{\parskip}{\baselineskip}%
 	\setlength{\parindent}{0pt}
 	}
@@ -148,23 +116,17 @@
 \RedeclareSectionCommand[beforeskip=0pt,runin=false,afterskip=-0.5\parskip]{section}
 \addtokomafont{section}{\textcolor{crimson}}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Redefine chapter style
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Define color for chapter number
-\newcommand{\chapternumfont}{%      % define font for chapter number
-	\usefont{T1}{pnc}{b}{n}%        % choose New Chancery, bold, normal shape
-	\fontsize{50}{50}%              % font size 50pt, baselineskip 50pt
-	\selectfont%                    % activate font
-}
-
 \RedeclareSectionCommand[beforeskip=0pt,innerskip=-20pt,afterskip=0pt,afterindent=false]{chapter}
 \renewcommand*{\raggedchapter}{\raggedleft}
 
-\addtokomafont{disposition}{\rmfamily}
-\addtokomafont{chapterprefix}{\chapternumfont \textcolor{gray!50}}
-\addtokomafont{chapter}{\Huge\bfseries \textcolor{crimson}}
+\addtokomafont{disposition}{\Huge \rmfamily}
+\addtokomafont{chapterprefix}{\Huge \textcolor{gray!50}}
+\addtokomafont{chapter}{\fontsize{35}{35} \selectfont \bfseries \textcolor{crimson}}
 \addtokomafont{chapterentry}{\Large \textcolor{crimson}}
 
 \setlength{\parskip}{\baselineskip}%

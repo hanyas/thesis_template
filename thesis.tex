@@ -1,123 +1,120 @@
 \documentclass{iasthesis}
 
-\usepackage[nohints]{minitoc} 
-\setcounter{minitocdepth}{2} 
-\mtcsetrules{*}{off}
-
-% removes chapter numbers from minitoc
-\newcommand{\filterminitoc}[1]{#1}
-\renewcommand{\thesection}{\csname filterminitoc \endcsname{\arabic{chapter}.}\arabic{section}}
-\newcommand{\minitocsection}{\begingroup\renewcommand{\filterminitoc}[1]{}\minitoc\endgroup}
-
-% in combination with myalpha.bst this highlights name in publications
-\def\FormatName#1{%
-	\def\myname{Hany Abdulsamad}%
-	\edef\name{#1}%
-	\ifx\name\myname
-	\textbf{#1}%
-	\else
-	#1%
-	\fi
-}
-
-% multiple bibliographies
-\usepackage{multibbl}
-
-% control spaceing in bib
-\usepackage{bibspacing}
+\input{packages.tex}
+\input{macros.tex}
 
 \usepackage{layout}
 \usepackage{kantlipsum}
 
 
 \begin{document}
-	
-	\title{\textcolor{crimson} {A Suitable Title}}
-	\author{\textcolor{crimson} {Hany Abdulsamad, M.Sc.}}
-	
-	\maketitle
-	
-	\begin{dedication}
-		\input{meta/dedication.tex}
-	\end{dedication}
 
-	% start roman numbering at abstract
-	\pagenumbering{Roman}
-	
+%%%%%%%%%%%%%%%%%%%%%%%%
+% title page
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\textcolor{crimson} {A Suitable Title}}
+\author{\textcolor{crimson} {Hany Abdulsamad, M.Sc.}}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% tudprints
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tudprints}
+	\input{meta/tudprints.tex}
+\end{tudprints}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% meta
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{dedication}
+	\input{meta/dedication.tex}
+\end{dedication}
+
+% empty page
+\newpage\null\thispagestyle{empty}\newpage
+
+% start roman numbering at abstract
+\pagenumbering{Roman}
+
 %	% check layout margins
 %	\layout
-	
-	\begin{meta}{Acknowledgement}
-		\input{meta/acknowledgements.tex}
-	\end{meta}
 
-	\begin{meta}{Kurzfassung}
-		\begin{otherlanguage}{ngerman}
-			\input{meta/kurzfassung.tex}
-		\end{otherlanguage}
-	\end{meta}
+\begin{meta}{Acknowledgement}
+	\input{meta/acknowledgements.tex}
+\end{meta}
 
-	\begin{meta}{Abstract}
-		\input{meta/abstract.tex}
-	\end{meta}
+\begin{meta}{Kurzfassung}
+	\begin{otherlanguage}{ngerman}
+		\input{meta/kurzfassung.tex}
+	\end{otherlanguage}
+\end{meta}
 
-
-
-	% publication biblio
-	\newbibliography{pubs}
-	\bibliographystyle{pubs}{myalpha}
-
-	\setlength{\bibitemsep}{.25\baselineskip plus .05\baselineskip minus .05\baselineskip}
-	\nocite{pubs}{*}
-	\bibliography{pubs}{meta/publications.bib}{Publications}
+\begin{meta}{Abstract}
+	\input{meta/abstract.tex}
+\end{meta}
 
 
-	\dominitoc[n]
-	
-	\tableofcontents
-	\clearpage
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%
-	% Document mainmatter
-	%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	% use arabic numbering from first chapter on
-	\pagenumbering{arabic}
-		
-	\chapter{Introduction}
-	\minitocsection 
-	\kant
-	\section{First Section}
-	\kant
-	\section{Second Section}
-	\kant
-	\section{Third Section}
-	\kant
-	
-	\chapter{Second Chapter}
-	\minitocsection 
-	\kant
-	\section{First Section}
-	\kant
-	\section{Second Section}
-	\kant
-	\section{Third Section}
-	\kant
-	
-	\chapter{Third Chapter}
-	\minitocsection 
-	\kant
-	\section{First Section}
-	\kant
-	\section{Second Section}
-	\kant
-	\section{Third Section}
-	\kant
-	
-	\newbibliography{refs}
-	\bibliographystyle{refs}{fixalpha}
-	\setlength{\bibitemsep}{.25\baselineskip plus .05\baselineskip minus .05\baselineskip}
-	\nocite{refs}{*}
-	\bibliography{refs}{meta/references.bib}{Bibliography}
-	
+%%%%%%%%%%%%%%%%%%%%%%%%
+% publications
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% publication biblio
+\setlength{\bibitemsep}{.75\baselineskip plus .05\baselineskip minus .05\baselineskip}
+
+\newbibliography{pubs}
+\bibliographystyle{pubs}{myapalike}
+
+\nocite{pubs}{*}
+\bibliography{pubs}{meta/publications.bib}{Publications}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% table of contents
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\dominitoc[n]
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% mainmatter
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% use arabic numbering from first chapter on
+\pagenumbering{arabic}
+
+\input{content/chapter1.tex}
+\input{content/chapter2.tex}
+\input{content/chapter3.tex}
+\input{content/chapter4.tex}
+
+{
+	\appendix{}
+	\input{content/appendix1.tex}
+	\input{content/appendix2.tex}
+	\input{content/appendix3.tex}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% references
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% references biblio
+\setlength{\bibitemsep}{.25\baselineskip plus .05\baselineskip minus .05\baselineskip}
+
+\newbibliography{refs}
+\bibliographystyle{refs}{myapalike}
+
+\nocite{refs}{*}
+\bibliography{refs}{meta/references.bib}{Bibliography}
+
 \end{document}

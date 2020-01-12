@@ -3,7 +3,7 @@
 arg=${1:-.}
 exts="aux bbl blg brf idx ilg ind lof log lol\
   lot out toc xmpi run.xml xmpdata bcf synctex.gz\
-  fdb_latexmk fls acn syo xdy opo mtc* maf"
+  fdb_latexmk fls acn syo xdy opo mtc* maf auxlock"
 
 if [ -d $arg ]; then
     for ext in $exts; do

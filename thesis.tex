@@ -9,6 +9,7 @@
 
 \begin{document}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 % title page
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,10 +69,11 @@
 \setlength{\bibitemsep}{.75\baselineskip plus .05\baselineskip minus .05\baselineskip}
 
 \newbibliography{pubs}
-\bibliographystyle{pubs}{myapalike}
+\bibliographystyle{pubs}{biblio/custom_apalike}
 
 \nocite{pubs}{*}
-\bibliography{pubs}{meta/publications.bib}{Publications}
+\bibliography{pubs}{biblio/publications.bib}{Publications}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % table of contents
@@ -112,9 +114,9 @@
 \setlength{\bibitemsep}{.25\baselineskip plus .05\baselineskip minus .05\baselineskip}
 
 \newbibliography{refs}
-\bibliographystyle{refs}{myapalike}
+\bibliographystyle{refs}{biblio/custom_apalike}
 
 \nocite{refs}{*}
-\bibliography{refs}{meta/references.bib}{Bibliography}
+\bibliography{refs}{biblio/references.bib}{Bibliography}
 
 \end{document}
